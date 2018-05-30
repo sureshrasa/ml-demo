@@ -17,3 +17,22 @@ def loadData():
     print("y shape = ", y.shape)
     
     return X, y
+
+def partitionSamples(X, y):
+    numSamples = X.shape[0]
+    trainingSamples = int(0.6 * numSamples)
+    devSamples = int(0.2 * numSamples)
+    testSamples = numSamples - trainingSamples - devSamples
+
+    print("Total = {:d}, Training samples = {:d}, dev samples = {:d}, test samples = {:d}\n".format(numSamples, trainingSamples, devSamples, testSamples))
+
+    X_train = X[0:trainingSamples, ...]
+    y_train = y[0:trainingSamples, ...]
+
+    X_dev = X[trainingSamples:trainingSamples+devSamples, ...]
+    y_dev = y[trainingSamples:trainingSamples+devSamples, ...]
+
+    X_test = X[-testSamples:, ...]
+    y_test = y[-testSamples:, ...]
+
+    return {"X_train":X_train, "y_train":y_train, "X_dev":X_dev, "y_dev":y_dev, "X_test":X_test, "y_test":y_test}
